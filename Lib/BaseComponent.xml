@@ -1,0 +1,880 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BaseComponent</name>
+    </assembly>
+    <members>
+        <member name="T:BaseComponent.PortValueEventArgs">
+            <summary>
+            Port-레벨 이벤트 인자 클래스
+            </summary>
+        </member>
+        <member name="T:BaseComponent.BasePanel">
+            <summary>
+            컴포넌트 클래스
+            Canvas에 올라가는 컴포넌스 클래스임
+            </summary>
+        </member>
+        <member name="E:BaseComponent.BasePanel.InputReceived">
+            <summary>
+            입력 포트로 들어온 값을 폼에서 처리하도록 알립니다.
+            </summary>
+        </member>
+        <member name="E:BaseComponent.BasePanel.OutputSent">
+            <summary>
+            출력 포트로 내보낸 값을 폼에서 처리하도록 알립니다.
+            </summary>
+        </member>
+        <member name="E:BaseComponent.BasePanel.ComponentDeleted">
+            <summary>
+            컴포넌트가 삭세시
+            </summary>
+        </member>
+        <member name="E:BaseComponent.BasePanel.PropertyChanged">
+            <summary>
+            속성값 변경시
+            </summary>
+        </member>
+        <member name="E:BaseComponent.BasePanel.OnToggleCollapsing">
+            <summary>
+            접힘 시도 직전에 발생합니다.
+            </summary>
+        </member>
+        <member name="E:BaseComponent.BasePanel.OnToggleCollapsed">
+            <summary>
+            접힘 완료 후 발생합니다.
+            </summary>
+        </member>
+        <member name="E:BaseComponent.BasePanel.OnToggleExpandeding">
+            <summary>
+            펼침 시도 직전에 발생합니다.
+            </summary>
+        </member>
+        <member name="E:BaseComponent.BasePanel.OnToggleExpanded">
+            <summary>
+            펼침 완료 후 발생합니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.BasePanel.CollapseExtraPadding">
+            <summary>
+            접힘 상태일 때 추가로 확보할 폭 (디폴트는 40)
+            </summary>
+        </member>
+        <member name="M:BaseComponent.BasePanel.ToggleCollapseRequested">
+            <summary>
+            Collapse 토글 전에 호출됨. false를 반환하면 무시됨.
+            자식 클래스에서 조건 검사 가능.
+            </summary>
+        </member>
+        <member name="M:BaseComponent.BasePanel.OnPortsCreated">
+            <summary>
+            파생 클래스에서 포트 생성이 끝난 후 호출됩니다.
+            이 시점에 GetAllPorts()를 이용해 포트 개수를 확인하고,
+            MinWidthSize/MinHeightSize를 설정하세요.
+            </summary>
+        </member>
+        <member name="M:BaseComponent.BasePanel.AttachToCanvas(BaseComponent.CanvasPanel)">
+            <summary>
+            ParentCanvas를 연결합니다.
+            </summary>
+        </member>
+        <member name="M:BaseComponent.BasePanel.GetAllProperties">
+            <summary>
+            현재 컴포넌트의 모든 속성 이름과 값을 Dictionary string object로 반환합니다.
+            </summary>
+        </member>
+        <member name="M:BaseComponent.BasePanel.SetControlPropertyByName(System.String,System.Object)">
+            <summary>
+            "컨트롤이름.속성이름" 형식으로 Control을 찾아 속성값을 설정합니다.
+            </summary>
+            <param name="fullPropertyName">예: "Button1.Text"</param>
+            <param name="value">설정할 값</param>
+        </member>
+        <member name="M:BaseComponent.BasePanel.SetPropertyByName(System.String,System.Object)">
+            <summary>
+            속성 이름(string)과 값(object)으로 속성 값을 설정합니다.
+            Enum, Color 타입도 자동 변환 지원
+            </summary>
+        </member>
+        <member name="M:BaseComponent.BasePanel.DrawOutLine(System.Drawing.Graphics)">
+            <summary>
+            선택 컴포넌트 외곽선 그리기
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:BaseComponent.BasePanel.GetContentRectangle">
+            <summary>
+            헤더 + 핸들(handle) 크기를 고려한 본문 영역(Rectangle)을 반환합니다.
+            </summary>
+        </member>
+        <member name="M:BaseComponent.BasePanel.TransferData``1(BaseComponent.NodePort,``0,System.Collections.Generic.HashSet{System.Guid})">
+            <summary>
+            연결선으로 전송 output전용, 연결됬는지 않됬는지 확인함
+            </summary>
+            <typeparam name="T">전송할 데이터형</typeparam>
+            <param name="output">연결된output포트</param>
+            <param name="data">전송데이터</param>
+            <param name="visitedPortIds"></param>
+        </member>
+        <member name="M:BaseComponent.BasePanel.BlinkLed(BaseComponent.LedControl,System.Int32)">
+            <summary>
+            LED 깜박임
+            </summary>
+            <param name="led"></param>
+            <param name="duration"></param>
+        </member>
+        <member name="M:BaseComponent.BasePanel.CreatePort(BaseComponent.NodePort.PortType,System.String,BaseComponent.PortDataType,System.Action{System.Object},BaseComponent.PortDirection,System.Boolean,System.Nullable{System.Guid},System.String,System.Boolean,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            포트 생성 
+            </summary>
+            <param name="type"></param>
+            <param name="label"></param>
+            <param name="dataType"></param>
+            <param name="onReceive"></param>
+            <param name="direction"></param>
+            <param name="allowMulti"></param>
+            <param name="id"></param>
+            <param name="desc"></param>
+            <param name="showLed"></param>
+            <param name="tag"></param>
+            <param name="fix"></param>
+            <param name="isTwoway"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseComponent.BasePanel.AddInputPort(System.String,BaseComponent.PortDataType,System.Action{System.Object},BaseComponent.PortDirection,System.Boolean,System.Nullable{System.Guid},System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            입력포트 생성
+            </summary>
+            <param name="label"></param>
+            <param name="dataType"></param>
+            <param name="onReceive"></param>
+            <param name="direction"></param>
+            <param name="allowMultipleConnections"></param>
+            <param name="id"></param>
+            <param name="desc"></param>
+            <param name="tag"></param>
+            <param name="fix"></param>
+            <param name="showLed"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseComponent.BasePanel.AddOutputPort(System.String,BaseComponent.PortDataType,BaseComponent.PortDirection,System.Boolean,System.Nullable{System.Guid},System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            단방향 출력포트 생성 
+            </summary>
+            <param name="label"></param>
+            <param name="dataType"></param>
+            <param name="direction"></param>
+            <param name="allowMultipleConnections"></param>
+            <param name="id"></param>
+            <param name="desc"></param>
+            <param name="tag"></param>
+            <param name="fix"></param>
+            <param name="showLed"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseComponent.BasePanel.AddOutputPortTwoway(System.String,BaseComponent.PortDataType,System.Action{System.Object},BaseComponent.PortDirection,System.Boolean,System.Nullable{System.Guid},System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            양방향 출력포트 생성 (입력도 가능)
+            </summary>
+            <param name="label"></param>
+            <param name="dataType"></param>
+            <param name="onReceive"></param>
+            <param name="direction"></param>
+            <param name="allowMultipleConnections"></param>
+            <param name="id"></param>
+            <param name="desc"></param>
+            <param name="tag"></param>
+            <param name="fix"></param>
+            <param name="showLed"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseComponent.BasePanel.GetRoundedRectangleGraphicsPath(System.Drawing.RectangleF,System.Single,System.Single,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary> 
+            둥근 사각형 그래픽 패스 구하기 
+            </summary> 
+            <param name="rectangle">사각형</param> 
+            <param name="radiusX">반경 X</param>
+            <param name="radiusY">반경 Y</param> 
+            <param name="roundUpperLeft">좌상단 라운드 처리 여부</param> 
+            <param name="roundUpperRight">우상단 라운드 처리 여부</param> 
+            <param name="roundLowerLeft">좌하단 라운드 처리 여부</param>
+            <param name="roundLowerRight">우하단 라운드 처리 여부</param> 
+            <returns>그래픽스 패스</returns> 
+        </member>
+        <member name="T:BaseComponent.STATUS">
+            <summary>
+            상태
+            </summary>
+        </member>
+        <member name="T:BaseComponent.BaseExchangeData">
+            <summary>
+            데이터 교환용 클래스
+            </summary>
+        </member>
+        <member name="P:BaseComponent.BaseExchangeData.Status">
+            <summary>
+            상태
+            </summary>
+        </member>
+        <member name="P:BaseComponent.BaseExchangeData.Message">
+            <summary>
+            메시지
+            </summary>
+        </member>
+        <member name="P:BaseComponent.BaseExchangeData.Step">
+            <summary>
+            단계
+            </summary>
+        </member>
+        <member name="P:BaseComponent.BaseExchangeData.ExchangeData">
+            <summary>
+            데이터 저장용
+            </summary>
+        </member>
+        <member name="M:BaseComponent.BaseExchangeData.Copy">
+            <summary>
+            DEEP COPY
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:BaseComponent.BaseWorkFlowModel.WorkFlowName">
+            <summary>
+            WorkFlow 이름
+            </summary>
+        </member>
+        <member name="P:BaseComponent.BaseWorkFlowModel.WorkFlowNameSpace">
+            <summary>
+            WorkFlow 네임스페이스
+            </summary>
+        </member>
+        <member name="P:BaseComponent.BaseWorkFlowModel.WorkFlowClassName">
+            <summary>
+            WorkFlow 클래스 이름
+            </summary>
+        </member>
+        <member name="M:BaseComponent.BaseWorkFlow.RunWorkFlow(BaseComponent.BaseExchangeData,System.Collections.Generic.List{BaseComponent.BaseWorkFlowModel})">
+            <summary>
+            WorkFlow 목록 실행
+            </summary>
+            <param name="initData">초기값</param>
+            <param name="WorkFlowData">WorkFlow 목록</param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseComponent.BaseWorkFlow.RunWorkFlow(BaseComponent.BaseExchangeData,BaseComponent.BaseWorkFlowModel)">
+            <summary>
+            단일 WorkFlow 실행
+            </summary>
+            <param name="initData">초기값</param>
+            <param name="WorkFlowData">실행 WorkFlow 이름</param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseComponent.BaseWorkFlow.ProcessWorkFlow(System.String,System.String,BaseComponent.BaseExchangeData@)">
+            <summary>
+            동적 DLL 실행
+            </summary>
+            <param name="nameSpace">로드 할 어셈블리 NAMESPACE</param>
+            <param name="className">클래스명</param>
+            <param name="parameterForTheMethod">메소드 파라메타</param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseComponent.BaseWorkFlow.ProcessWorkFlow(System.String,System.String,BaseComponent.BaseExchangeData)">
+            <summary>
+            동적 DLL 실행
+            </summary>
+            <param name="nameSpace">로드 할 어셈블리 NAMESPACE</param>
+            <param name="className">클래스명</param>
+            <param name="parameterForTheMethod">메소드 파라메타</param>
+            <returns>BaseExchangeData</returns>
+        </member>
+        <member name="F:BaseComponent.ButtonControl.components">
+            <summary> 
+            필수 디자이너 변수입니다.
+            </summary>
+        </member>
+        <member name="M:BaseComponent.ButtonControl.Dispose(System.Boolean)">
+            <summary> 
+            사용 중인 모든 리소스를 정리합니다.
+            </summary>
+            <param name="disposing">관리되는 리소스를 삭제해야 하면 true이고, 그렇지 않으면 false입니다.</param>
+        </member>
+        <member name="M:BaseComponent.ButtonControl.InitializeComponent">
+            <summary> 
+            디자이너 지원에 필요한 메서드입니다. 
+            이 메서드의 내용을 코드 편집기로 수정하지 마세요.
+            </summary>
+        </member>
+        <member name="T:BaseComponent.CanvasPanel">
+            <summary>
+            Canvas 메인
+            </summary>
+        </member>
+        <member name="P:BaseComponent.CanvasPanel.GridSize">
+            <summary>
+            그리드 크기
+            </summary>
+        </member>
+        <member name="P:BaseComponent.CanvasPanel.LightLineColor">
+            <summary>
+            라인색상
+            </summary>
+        </member>
+        <member name="P:BaseComponent.CanvasPanel.BoldLineColor">
+            <summary>
+            진한라인 색상
+            </summary>
+        </member>
+        <member name="P:BaseComponent.CanvasPanel.IsMenuLock">
+            <summary>
+            메뉴 잠금 유무
+            </summary>
+        </member>
+        <member name="F:BaseComponent.CanvasPanel.isPropertyGridVisible">
+            <summary>
+            속성창을 Visible
+            </summary>
+        </member>
+        <member name="M:BaseComponent.CanvasPanel.SetComponentLimit(System.String,System.Int32)">
+            <summary>특정 컴포넌트 타입의 최대 개수를 설정합니다. limit &lt;=0 이면 제한 해제</summary>
+        </member>
+        <member name="M:BaseComponent.CanvasPanel.RemoveComponentLimit(System.String)">
+            <summary>특정 컴포넌트 타입의 제한을 제거합니다. 제한이 없으면 false</summary>
+        </member>
+        <member name="M:BaseComponent.CanvasPanel.AutoLayout">
+            <summary>
+            자동정렬
+            </summary>
+        </member>
+        <member name="M:BaseComponent.CanvasPanel.GetPropertiesByCategories(BaseComponent.BasePanel,System.String[])">
+            <summary>
+            특정 카테고리 값만 가져오기위해
+            </summary>
+            <param name="c"></param>
+            <param name="categories"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BaseComponent.CanvasPanel.InitComponentRestoreActions">
+            <summary>
+            속성이 있는것들만 여기서 등록하면 된다.
+            </summary>
+        </member>
+        <member name="M:BaseComponent.CanvasPanel.GetDisplayNameForComponent(System.Type)">
+            <summary>
+            iComponentAttribute.DisplayName을 우선 사용하되,
+            “A/B” 형태라면 슬래시 뒤(B)만 리턴합니다.
+            어트리뷰트가 없으면 Type.Name을 그대로 사용합니다.
+            </summary>
+        </member>
+        <member name="M:BaseComponent.CanvasPanel.DrawLine(System.Drawing.Graphics)">
+            <summary>
+            연결선 그리기
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:BaseComponent.CanvasPanel.PasteComponent">
+            <summary>
+            붙여넣기
+            </summary>
+        </member>
+        <member name="M:BaseComponent.CanvasPanel.ColorToArgbOrOriginal(System.String)">
+            <summary>
+            "Color [...]" 형태를 검사하여
+            - 네임드 컬러: A,R,G,B
+            - 웹헥스: A,R,G,B
+            - A=…,R=…,G=…,B=…: A,R,G,B
+            로 변환하고, 실패 시 원본을 그대로 반환합니다.
+            </summary>
+        </member>
+        <member name="T:BaseComponent.ColorTemplate">
+            <summary>
+            색상 템플릿
+            </summary>
+        </member>
+        <member name="T:BaseComponent.ComponentData">
+            <summary>
+            컴포넌트 정보 클래스
+            </summary>
+        </member>
+        <member name="F:BaseComponent.ConsoleControl.components">
+            <summary> 
+            필수 디자이너 변수입니다.
+            </summary>
+        </member>
+        <member name="M:BaseComponent.ConsoleControl.Dispose(System.Boolean)">
+            <summary> 
+            사용 중인 모든 리소스를 정리합니다.
+            </summary>
+            <param name="disposing">관리되는 리소스를 삭제해야 하면 true이고, 그렇지 않으면 false입니다.</param>
+        </member>
+        <member name="M:BaseComponent.ConsoleControl.InitializeComponent">
+            <summary> 
+            디자이너 지원에 필요한 메서드입니다. 
+            이 메서드의 내용을 코드 편집기로 수정하지 마세요.
+            </summary>
+        </member>
+        <member name="M:BaseComponent.iComponentAttribute.#ctor(System.String,System.String)">
+            <summary>
+            컴포넌트 어튜리뷰트
+            </summary>
+            <param name="displayName">화면 표시 이름</param>
+            <param name="iconResourceName">아이콘 파일 이름</param>
+        </member>
+        <member name="F:BaseComponent.InputForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:BaseComponent.InputForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:BaseComponent.InputForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:BaseComponent.LedControl.components">
+            <summary> 
+            필수 디자이너 변수입니다.
+            </summary>
+        </member>
+        <member name="M:BaseComponent.LedControl.Dispose(System.Boolean)">
+            <summary> 
+            사용 중인 모든 리소스를 정리합니다.
+            </summary>
+            <param name="disposing">관리되는 리소스를 삭제해야 하면 true이고, 그렇지 않으면 false입니다.</param>
+        </member>
+        <member name="M:BaseComponent.LedControl.InitializeComponent">
+            <summary> 
+            디자이너 지원에 필요한 메서드입니다. 
+            이 메서드의 내용을 코드 편집기로 수정하지 마세요.
+            </summary>
+        </member>
+        <member name="T:BaseComponent.NodePort">
+            <summary>
+            포트정보 상세 클래스
+            </summary>
+        </member>
+        <member name="P:BaseComponent.NodePort.AllowMultipleConnections">
+            <summary>
+            이 포트가 여러 개 연결을 허용할지 여부
+            </summary>
+        </member>
+        <member name="M:BaseComponent.NodePort.GetColorForDataType(BaseComponent.PortDataType,System.Boolean)">
+            <summary>
+            포트 타입별 포트색상 정의
+            </summary>
+            <param name="type"></param>
+            <param name="isConnected"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BaseComponent.PortData">
+            <summary>
+            포트정보 클래스
+            </summary>
+        </member>
+        <member name="T:BaseComponent.Properties.Resources">
+            <summary>
+              지역화된 문자열 등을 찾기 위한 강력한 형식의 리소스 클래스입니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.ResourceManager">
+            <summary>
+              이 클래스에서 사용하는 캐시된 ResourceManager 인스턴스를 반환합니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.Culture">
+            <summary>
+              이 강력한 형식의 리소스 클래스를 사용하여 모든 리소스 조회에 대해 현재 스레드의 CurrentUICulture 속성을
+              재정의합니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources._default">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.AND">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.bottom">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.bottomOutput">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.cctv">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.client">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.Communicator">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.connect">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.console">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.copy">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.cpu">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.database">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.datetime">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.deletepanel">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.disConn">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.doughnutProgress">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.eth">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.export">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.fileCopy">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.fileDelete">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.fileMove">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.fileOpen">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.fileWatcher">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.flow">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.flow2">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.formMove">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.gridView">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.group">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.http">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.json">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.jsonwrite">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.keyboard">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.keylock">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.left">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.leftinput">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.lockpanel">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.log">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.Melsec">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.memo">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.merge">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.mon">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.Monitoring">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.NAND">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.network">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.newfile">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.NOR">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.NOT">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.OR">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.pin">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.PlantA">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.PlantB">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.plugin">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.propt">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.Random">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.right">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.rightoutput">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.rs232">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.save">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.savedb">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.script">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.serial">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.serialF">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.server">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.sql">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.sync">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.sync2">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.table">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.testBlock">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.toggle">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.topInput">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.trendgraph">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.txt">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.unlockpanel">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.up">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.webcam">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.writefile">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:BaseComponent.Properties.Resources.XOR">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+    </members>
+</doc>

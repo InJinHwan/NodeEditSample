@@ -1,0 +1,17 @@
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\bin\Debug\BasePlugins.dll.config
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\bin\Debug\BasePlugins.dll
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\bin\Debug\BasePlugins.pdb
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\bin\Debug\BaseComponent.dll
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\bin\Debug\Newtonsoft.Json.dll
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\bin\Debug\BaseComponent.pdb
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\bin\Debug\BaseComponent.dll.config
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\bin\Debug\Newtonsoft.Json.xml
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\obj\Debug\BasePlugins.ImagePlugin.resources
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\obj\Debug\BasePlugins.Properties.Resources.resources
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\obj\Debug\BasePlugins.csproj.GenerateResource.cache
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\obj\Debug\BasePlugins.csproj.CoreCompileInputs.cache
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\obj\Debug\BasePlugins.csproj.CopyComplete
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\obj\Debug\BasePlugins.dll
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\obj\Debug\BasePlugins.pdb
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\obj\Debug\BasePlugins.SamplePlugin.resources
+C:\Project\iProject.iTools.BaseComponent\BasePlugins\obj\Debug\BasePlugins.csproj.AssemblyReference.cache
