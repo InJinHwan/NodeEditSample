@@ -1,28 +1,23 @@
-<img width="1702" height="1043" alt="image" src="https://github.com/user-attachments/assets/862ccaae-b038-497b-aad3-c49992f3b4be" />
+NodeEdit컴포넌트는 지극히 개인적인 이유에서 시작한 프로젝트입니다.
+30여년동안 개발자로 일하면서 나만의 툴이나 라이브러리, 또는 프레임워크를 만든적이 없으니까요.
+우연히 유니티와 블랜더의 NodeEdit를 접하게 되었고, 아! 이거다라는 생각이 들었습니다.
+깃허브를 뒤져봤죠. 엄청 많았습니다.
+하지만, 제가 생각하는것은 없었죠.(못 찾은것일수도...)
+모든 컴포넌트들을 사용할수 있어야한다는게 조건이었으니까요.
+그래서 나오게 된게 이녀석입니다. ^^
+LIB폴더에 있는 BaseComponent.dll를 참조와 도구창에 등록하시고 사용하시면 됩니다.
+TestForm을 참고하시면 될듯하네요.
 
 
-BaseComponent.dll는 .Net 4.7.2 Winform으로 개발되었으며 VS2019버전에서 개발되었습니다.(너무 오래됬죠? ^^)
+BaseComponent.dll은 .Net 4.7.2 Winform으로 개발되었으며 VS2019버전에서 개발되었습니다.(너무 오래됬죠? ^^)
 BaseComponent.dll의 상업적 이용은 PROBUG의 허락이 필요없습니다. ^^(상업적으로 이용될리도 없지만...)
 단지 도움줬다는 표기만 부탁드립니다.
 아~! 사용했다는 메일 한통 보내주시면 더욱 감사하겠습니다.
-BaseComponent.dll는 소스가 정리되는대로 공개하도록 하겠습니다.(개인프로젝트라서 지저분해요 ㅠㅠ)
-
-Bin/Plugin 폴더에 각 플러그인별 폴더에 plugin확장자로 넣어두면 자동으로 추가됩니다.
+버전업은 자주는 못하지만, 꾸준히는 할꺼에요.
 
 감사합니다.
 
-BaseComponent.dll was developed with .Net 4.7.2 Winform and developed with VS2019 version. (It's too old, right? ^^)
-Commercial use of BaseComponent.dll does not require permission from PROBUG. ^^
-Please just indicate that you helped.
-Ah~! I would be even more grateful if you could send me an email saying you used it.
-We will release BaseComponent.dll as soon as the source code is organized. (It's a personal project, so it's messy. T_T)
-
-If you put it as a plugin extension in the folder for each plugin in the Bin/Plugin folder, it will be added automatically.
-
-Since I am from Korea (South Korea), the annotations are in Korean.
-For those of you who are not Korean, it would be a good time to learn Hangul ^^
-
-thank you
+<img width="1702" height="1043" alt="image" src="https://github.com/user-attachments/assets/862ccaae-b038-497b-aad3-c49992f3b4be" />
 
 <img width="921" height="454" alt="image" src="https://github.com/user-attachments/assets/67930e73-41bf-4bcb-a553-3e2429785399" />
 
