@@ -1,3 +1,6 @@
+<img width="1702" height="1043" alt="image" src="https://github.com/user-attachments/assets/862ccaae-b038-497b-aad3-c49992f3b4be" />
+
+
 BaseComponent.dll는 .Net 4.7.2 Winform으로 개발되었으며 VS2019버전에서 개발되었습니다.(너무 오래됬죠? ^^)
 BaseComponent.dll의 상업적 이용은 PROBUG의 허락이 필요없습니다. ^^(상업적으로 이용될리도 없지만...)
 단지 도움줬다는 표기만 부탁드립니다.
