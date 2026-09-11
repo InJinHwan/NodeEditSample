@@ -98,6 +98,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MsSql.resx">
+      <DependentUpon>MsSql.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Networks.resx">
       <DependentUpon>Networks.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +138,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /y "$(TargetDir)\$(TargetName).dll" "$(SolutionDir)\TestForm\bin\Debug\plugin\DataBase\$(TargetName).plugin"</PostBuildEvent>
+    <PostBuildEvent>if not exist "$(MSBuildProjectDirectory)\..\TestForm\bin\$(Configuration)\plugin\DataBase" mkdir "$(MSBuildProjectDirectory)\..\TestForm\bin\$(Configuration)\plugin\DataBase"
+copy /y "$(TargetPath)" "$(MSBuildProjectDirectory)\..\TestForm\bin\$(Configuration)\plugin\DataBase\$(TargetName).plugin"</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -29,8 +29,16 @@ namespace DataBasePlugin
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // MsSql
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.MinHeightSize = 46;
+            this.Name = "MsSql";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
