@@ -33,4 +33,5 @@ BaseComponent.dll의 상업적 이용은 허락이 필요없습니다. ^^(상업
 
 <img width="1182" height="507" alt="image" src="https://github.com/user-attachments/assets/1db0dd35-c0d9-418d-a259-e2f040a34243" />
 
-<img width="1518" height="999" alt="image" src="https://github.com/user-attachments/assets/064ca1cc-b57f-494d-a0c6-41d596253360" />
+<img width="1031" height="551" alt="image" src="https://github.com/user-attachments/assets/9d8b6298-78fd-435f-a798-14479f729765" />
+
