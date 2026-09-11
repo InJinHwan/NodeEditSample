@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BaseComponent, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="BaseComponent, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\BaseComponent.dll</HintPath>
     </Reference>
@@ -54,6 +54,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BasePlugins\BasePlugins.csproj">
+      <Project>{A4FDB849-D2FC-4E9F-9F19-4F35359F04EC}</Project>
+      <Name>BasePlugins</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBasePlugin\DataBasePlugin.csproj">
+      <Project>{2A722AFA-163D-4C8A-B5D4-FB11E87B3868}</Project>
+      <Name>DataBasePlugin</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,5 +101,6 @@
   <ItemGroup>
     <Folder Include="Resources\" />
   </ItemGroup>
+  <Import Project="..\Build\SkiaSharp.props" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
